@@ -244,12 +244,12 @@ final class Game extends JLayeredPane implements ActionListener {
                                     } while (board[next] == EMPTY && vertical.hasNext(next));
                                 }
 
-                                //captures to check for extra captures
+                                //moves to check for extra captures
                                 ArrayList<ArrayList<Integer>> captureMoves = new ArrayList(Arrays.asList(new ArrayList[] {captureMove}));//<captureMove>
 
                                 board[index] = EMPTY;
 
-                                //check captures
+                                //check capture moves
                                 do {
                                     ArrayList<Integer> move = captureMoves.remove(0);//<capturesMove>, <empty>>
                                     ArrayList<Integer> captures = new ArrayList();
@@ -517,4 +517,5 @@ final class Game extends JLayeredPane implements ActionListener {
     }
 
 }
+
 
