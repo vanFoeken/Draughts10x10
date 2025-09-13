@@ -9,7 +9,7 @@ Java Swing International Draughts with AI
 
 -rotate board
 
--AI search depth 1-7 (moves + value -> -8+)
+-AI search depth 1-7
 
 Move animation.
 
