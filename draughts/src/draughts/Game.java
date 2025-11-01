@@ -48,7 +48,7 @@ import javax.swing.JLayeredPane;
  * 
  * class BoardMove -> move animation
  * 
- * @author Naardeze
+ * @author vanFoeken
  */
 
 final class Game extends JLayeredPane implements ActionListener {
@@ -514,3 +514,4 @@ final class Game extends JLayeredPane implements ActionListener {
     }
     
 }
+
