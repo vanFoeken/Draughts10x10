@@ -21,7 +21,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 
-
 /**
  * Draughts (main)
  *
@@ -148,4 +147,5 @@ final class Draughts extends JFrame {
     }
 
 }
+
 
