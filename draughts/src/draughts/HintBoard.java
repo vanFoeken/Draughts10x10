@@ -8,7 +8,6 @@ import java.awt.Component;
 import java.awt.Graphics;
 import java.util.Set;
 
-
 /**
  * HintBoard
  *
@@ -59,4 +58,5 @@ final class HintBoard extends Component {
     }
     
 }
+
 
