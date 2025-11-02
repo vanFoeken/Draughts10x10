@@ -1,17 +1,17 @@
 # Draughts10x10
 Java Swing International Draughts with AI
 
-Play draughts against computer, minimax with alfa beta pruning (bitboards). 
+Play draughts against computer. Basic minimax with alfa beta pruning (bitboards). 
 
 Move animation; draw not implemented (yet)
 
-New game: white or black.
+Game: white or black.
 
-AI 1-5 -> 1 level = 2 moves (min & max)
+AI (1-7) -> search depth
 
 Undo move
 
-Hint moveable pieces (on/off)
+Hint on/off (moveable)
 
 Rotate board
 
