@@ -26,7 +26,7 @@ import javax.swing.JPanel;
  * -paintTile (g.fillRect(tile))
  * -actionPerformed (rotate)
  * 
- * @author Naardeze
+ * @author vanFoeken
 */
 
 final class Board10x10 extends JPanel implements ActionListener {    
@@ -93,3 +93,4 @@ final class Board10x10 extends JPanel implements ActionListener {
     }
 
 }
+
