@@ -13,15 +13,14 @@ import java.util.HashSet;
  * MinMax
  * 
  * Minimax with alfa beta pruning
- * 1 level = 1 depth = 2 moves (min, max)
  * extends HashMap -> no dubbel calculations
  * 
- * enum Node -> evaluation
+ * enum Node -> alfa beta values
  * enum Diagonal -> move in 4 directions (bitboards)
  * 
  * -valueOf -> 1 moves, maxCapture
  *             2 alfa beta pruning
- * -getBoard -> board -> captured + to -> key
+ * -getBoard -> board + piece + captured + to -> key
  * -getAIMove -> best move
  * 
  * Special Thanx to Logic Crazy Chess!!
@@ -382,4 +381,5 @@ final class MinMax extends HashMap<String, Integer> {
     }
 
 }
+
 
