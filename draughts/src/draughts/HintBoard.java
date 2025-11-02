@@ -18,7 +18,7 @@ import java.util.Set;
  * selected -> one of moveable
  * moveable -> pieces to select 
  * 
- * @author Naardeze
+ * @author vanFoeken
 */
 
 final class HintBoard extends Component {
@@ -59,3 +59,4 @@ final class HintBoard extends Component {
     }
     
 }
+
