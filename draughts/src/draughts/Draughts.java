@@ -30,7 +30,7 @@ import javax.swing.JSlider;
  * AI (1-7) -> search depth
  * ARROW -> undo move
  * INFO -> game info (player and winner)
- * HINT -> color moveable
+ * HINT -> moveable (orange)
  * Rotate -> BOARD10X10
  * 
  * @author Naardeze
@@ -150,4 +150,5 @@ final class Draughts extends JFrame {
     }
 
 }
+
 
