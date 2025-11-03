@@ -1,7 +1,8 @@
 # Draughts10x10
 Java Swing International Draughts with AI
 
-Play draughts against computer. Basic minimax with alfa beta pruning (bitboards). 
+Play draughts against computer. Basic minimax with alfa beta pruning (bitboards).
+Draw not implemented (yet).
 
 Game: white or black.
 
@@ -13,5 +14,6 @@ Hint on/off (moveable)
 
 Rotate board
 
-Move animation; draw not implemented (yet). 
+Move animation.
+
 What you see is what you get. Have fun!!
