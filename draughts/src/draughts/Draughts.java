@@ -33,7 +33,7 @@ import javax.swing.JSlider;
  * HINT -> moveable (orange)
  * Rotate -> BOARD10X10
  * 
- * @author Naardeze
+ * @author vanFoeken
  */
 
 final class Draughts extends JFrame {
@@ -150,5 +150,6 @@ final class Draughts extends JFrame {
     }
 
 }
+
 
 
