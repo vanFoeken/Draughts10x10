@@ -46,9 +46,9 @@ import javax.swing.JLayeredPane;
  *                 2: evaluation -> gameover or get move (player (mouse) or ai (minimax))
  * -actionPerformed -> undo move
  * 
- * class BoardMove -> move animation
+ * class BoardMove -> animation
  * 
- * @author Naardeze
+ * @author vanFoeken
  */
 
 final class Game extends JLayeredPane implements ActionListener {
@@ -522,3 +522,4 @@ final class Game extends JLayeredPane implements ActionListener {
     }
     
 }
+
