@@ -26,7 +26,7 @@ import java.util.HashSet;
  * 
  * Special Thanx to Logic Crazy Chess!!
  * 
- * @author Naardeze
+ * @author vanFoeken
  */
 
 final class MinMax extends HashMap<String, Integer> {
@@ -382,3 +382,4 @@ final class MinMax extends HashMap<String, Integer> {
     }
 
 }
+
