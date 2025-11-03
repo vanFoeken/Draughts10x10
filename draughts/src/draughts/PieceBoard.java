@@ -18,7 +18,7 @@ import javax.swing.JComponent;
  * board (pieces)
  * move (yellow, green)
  * 
- * @author Naardeze
+ * @author vanFoeken
  */
 
 final class PieceBoard extends JComponent {
@@ -83,3 +83,4 @@ final class PieceBoard extends JComponent {
     }
     
 }
+
