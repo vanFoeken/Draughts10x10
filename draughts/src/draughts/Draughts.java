@@ -21,7 +21,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 
-
 /**
  * Draughts (main)
  *
@@ -30,10 +29,11 @@ import javax.swing.JSlider;
  * menu -> new Game (WHITE/BLACK)
  * AI (1-7) -> search depth
  * ARROW -> undo move
+ * INFO -> game info about player and winner color
  * HINT -> color moveable
  * Rotate -> BOARD10X10
  * 
- * @author vanFoeken
+ * @author Naardeze
  */
 
 final class Draughts extends JFrame {
@@ -45,7 +45,7 @@ final class Draughts extends JFrame {
     final static Board10x10 BOARD10X10 = new Board10x10();
 
     final static JButton ARROW = new JButton(new ImageIcon("arrow.png"));
-    final static JLabel GAME_OVER = new JLabel("Game Over", JLabel.CENTER);
+    final static JLabel INFO = new JLabel();
     final static JCheckBox HINT = new JCheckBox("Hint");
     
     private Game game = new Game(WHITE);//WHITE by default
@@ -59,7 +59,7 @@ final class Draughts extends JFrame {
         JButton rotation = new JButton("\ud83d\udd04");//rotate BOARD10X10
 
         JPanel center = new JPanel();//BOARD10X10
-        JPanel south = new JPanel(new GridLayout(1, 3));//left, GAME_OVER, right
+        JPanel south = new JPanel(new GridLayout(1, 3));//left, INFO, right
 
         JPanel left = new JPanel();//ARROW
         JPanel right = new JPanel(new FlowLayout(FlowLayout.RIGHT));//HINT, rotation
@@ -71,6 +71,7 @@ final class Draughts extends JFrame {
         
         for (int color : new int[] {WHITE, BLACK}) {
             menu.add(new JMenuItem(new ImageIcon(Toolkit.getDefaultToolkit().createImage(WB.toCharArray()[color] + ".png").getScaledInstance(44, 44, Image.SCALE_SMOOTH)))).addActionListener(e -> {
+                INFO.setText("");
                 BOARD10X10.remove(game);
                 
                 game = new Game(color);
@@ -104,7 +105,8 @@ final class Draughts extends JFrame {
         ARROW.setBorder(null);
         ARROW.setFocusable(false);
 
-        GAME_OVER.setFont(GAME_OVER.getFont().deriveFont(16f));
+        INFO.setHorizontalAlignment(JLabel.CENTER);
+        INFO.setFont(INFO.getFont().deriveFont(16f));
         
         HINT.setHorizontalTextPosition(JCheckBox.LEFT);
         HINT.setFont(HINT.getFont().deriveFont(16f));
@@ -125,7 +127,7 @@ final class Draughts extends JFrame {
         right.add(rotation);
         
         south.add(left);
-        south.add(GAME_OVER);
+        south.add(INFO);
         south.add(right);
         
         add(center, BorderLayout.CENTER);
@@ -148,4 +150,3 @@ final class Draughts extends JFrame {
     }
 
 }
-

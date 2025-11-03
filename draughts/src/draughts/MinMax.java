@@ -14,8 +14,9 @@ import java.util.HashSet;
  * 
  * Minimax with alfa beta pruning
  * extends HashMap -> no dubbel calculations
+ * 1 level = 1 move -> moves + level (1-7) + depth0 (continue while maxCapture > 0)
  * 
- * enum Node -> alfa beta values
+ * enum Node -> evaluation
  * enum Diagonal -> move in 4 directions (bitboards)
  * 
  * -valueOf -> 1 moves, maxCapture
@@ -25,7 +26,7 @@ import java.util.HashSet;
  * 
  * Special Thanx to Logic Crazy Chess!!
  * 
- * @author vanFoeken
+ * @author Naardeze
  */
 
 final class MinMax extends HashMap<String, Integer> {
@@ -35,7 +36,7 @@ final class MinMax extends HashMap<String, Integer> {
     private static enum Node {
         MIN {//player
             @Override
-            int toAlfaBeta(int alfaBeta, int value) {//beta
+            int toAlfaBeta(int alfaBeta, int value) {//<beta
                 return Math.min(alfaBeta, value);
             }
 
@@ -46,7 +47,7 @@ final class MinMax extends HashMap<String, Integer> {
         },
         MAX {//ai
             @Override
-            int toAlfaBeta(int alfaBeta, int value) {//alfa
+            int toAlfaBeta(int alfaBeta, int value) {//>alfa
                 return Math.max(alfaBeta, value);
             }
 
@@ -143,8 +144,8 @@ final class MinMax extends HashMap<String, Integer> {
 
     private static long middle = 0l;//x>0 & x<9 & y>0 & y<9
 
-    final private Node node;
-    final private int color;
+    final private Node node;//alfa or beta
+    final private int color;//ai or player
     
     private MinMax(Node node, int color) {
         this.node = node;
@@ -184,12 +185,12 @@ final class MinMax extends HashMap<String, Integer> {
                                     step = vertical.getLine(from, ~empty, step) & empty;
                                 }
                                 
-                                ArrayList<Long> captureMoves = new ArrayList(Arrays.asList(new Long[] {capture ^ step}));//captureMove
+                                ArrayList<Long> captureMoves = new ArrayList(Arrays.asList(new Long[] {capture ^ step}));
                                 
                                 empty ^= 1l << from;
                                 
                                 do {//check captureMoves for extra captures
-                                    move = captureMoves.remove(0);
+                                    move = captureMoves.remove(0);//captureMove
 
                                     long captures = move & opponent;
                 
@@ -205,7 +206,7 @@ final class MinMax extends HashMap<String, Integer> {
                                     for (long destination = move ^ captures; destination != 0l; destination ^= Long.lowestOneBit(destination)) {//empty tile(s)
                                         int to = Long.numberOfTrailingZeros(destination);
 
-                                        for (Diagonal diagonal : Diagonal.values()) {//1x4
+                                        for (Diagonal diagonal : Diagonal.values()) {
                                             if (diagonal.hasNext(to)) {
                                                 step = diagonal.getNext(to);
                                                 
@@ -372,7 +373,7 @@ final class MinMax extends HashMap<String, Integer> {
         return alfaMoves.get((int) (Math.random() * alfaMoves.size()));
     }
     
-    static {//middle -> can move in 4 directions
+    static {//middle -> all tiles which can move in 4 directions
         for (int i = COLUMN; i < ROW * COLUMN; i++) {//5<i<45
             if (i % GRID != COLUMN - 1 && i % GRID != COLUMN) {//!=4 & !=5
                 middle ^= 1l << i;
@@ -381,5 +382,3 @@ final class MinMax extends HashMap<String, Integer> {
     }
 
 }
-
-

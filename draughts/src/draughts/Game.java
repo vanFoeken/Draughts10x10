@@ -1,12 +1,13 @@
 package draughts;
 
+
 import static draughts.Board10x10.GRID;
 import static draughts.Board10x10.x;
 import static draughts.Board10x10.y;
+import static draughts.Draughts.AI;
 import static draughts.Draughts.ARROW;
 import static draughts.Draughts.BLACK;
 import static draughts.Draughts.BOARD10X10;
-import static draughts.Draughts.GAME_OVER;
 import static draughts.Draughts.WHITE;
 import static draughts.HintBoard.NONE;
 import static draughts.PieceBoard.EMPTY;
@@ -30,7 +31,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Stack;
 import javax.swing.JLayeredPane;
-import static draughts.Draughts.AI;
+import static draughts.Draughts.INFO;
 
 /**
  * Game
@@ -48,12 +49,14 @@ import static draughts.Draughts.AI;
  * 
  * class BoardMove -> move animation
  * 
- * @author vanFoeken
+ * @author Naardeze
  */
 
 final class Game extends JLayeredPane implements ActionListener {
     final static char[] PAWN = WB.toCharArray();//wb
     final static char[] KING = WB.toUpperCase().toCharArray();//WB
+    
+    final private static String[] COLOR = {"White", "Black"};
 
     private static enum Direction {
         MIN_X_MIN_Y(-1, -1),
@@ -112,7 +115,8 @@ final class Game extends JLayeredPane implements ActionListener {
         this.player = player;
 
         ARROW.setEnabled(false);
-        GAME_OVER.setVisible(false);
+        INFO.setText("Player is " + COLOR[player]);
+//        INFO.setVisible(false);
 
         hintBoard.addMouseListener(new MouseAdapter() {
             @Override
@@ -203,6 +207,14 @@ final class Game extends JLayeredPane implements ActionListener {
                 }
             }
         });
+        hintBoard.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentHidden(ComponentEvent e) {
+                hintBoard.removeComponentListener(this);
+
+                INFO.setText("");
+            }
+        });
          
         add(pieceBoard, new Integer(1));
         add(hintBoard);
@@ -272,7 +284,7 @@ final class Game extends JLayeredPane implements ActionListener {
 
                             step = vertical.getNext(capture);
                             
-                            if (board[step] == EMPTY) {
+                            if (board[step] == EMPTY) {//capture is legal
                                 ArrayList<Integer> captureMove = new ArrayList(Arrays.asList(new Integer[] {capture, step}));
 
                                 if (piece == KING[color] && vertical.hasNext(step)) {
@@ -289,13 +301,12 @@ final class Game extends JLayeredPane implements ActionListener {
 
                                 board[from] = EMPTY;
 
-                                //check moves for extra capture(s)
+                                //check captureMoves for extra captures
                                 do {
                                     ArrayList<Integer> destination = captureMoves.remove(0);//<captureMove>
                                     ArrayList<Integer> captured = new ArrayList();
 
-                                    //opponent<->empty;
-                                    do {
+                                    do {//opponent<->empty;
                                         captured.add(destination.remove(0));
                                     } while (pieces[opponent].contains(destination.get(0)));
 
@@ -309,10 +320,10 @@ final class Game extends JLayeredPane implements ActionListener {
                                             ArrayList<Integer> move = new ArrayList(captured);
                                             
                                             move.add(to);
-                                            movesPiece.add(move);//<<captured>, to>
+                                            movesPiece.add(move);
                                         }
 
-                                        for (Direction diagonal : Direction.values()) {//1x4
+                                        for (Direction diagonal : Direction.values()) {
                                             if (diagonal.hasNext(to)) {
                                                 step = diagonal.getNext(to);                                                
                                                 
@@ -327,7 +338,7 @@ final class Game extends JLayeredPane implements ActionListener {
                                                     capture = step;
                                                     step = diagonal.getNext(capture);
 
-                                                    if (board[step] == EMPTY) {
+                                                    if (board[step] == EMPTY) {//extra capture is legal
                                                         captureMove = new ArrayList(captured);
                                                         captureMove.addAll(Arrays.asList(new Integer[] {capture, step}));
 
@@ -341,13 +352,13 @@ final class Game extends JLayeredPane implements ActionListener {
                                                             } while (board[step] == EMPTY && diagonal.hasNext(step));
                                                         }
 
-                                                        captureMoves.add(captureMove);//<<captured>, capture, empty tile(s)>
+                                                        captureMoves.add(captureMove);
                                                     }
                                                 }
                                             }
                                         }
                                     }
-                                } while (!captureMoves.isEmpty());//all moves checked
+                                } while (!captureMoves.isEmpty());//all captureMoves checked
 
                                 board[from] = piece;
                             }
@@ -369,7 +380,8 @@ final class Game extends JLayeredPane implements ActionListener {
         //2 evaluation
         if (BOARD10X10.isAncestorOf(this)) {//continue only if this (game) is on BOARD10X10; prevent enable ARROW by new game during AI search
             if (moves.isEmpty()) {//game over
-                GAME_OVER.setVisible(true);
+                INFO.setText(COLOR[opponent] + " Wins");
+//                INFO.setVisible(true);
             } else if (color == player) {//player
                 hintBoard.setMoveable(moves.keySet());
             } else {//ai
@@ -395,7 +407,7 @@ final class Game extends JLayeredPane implements ActionListener {
         ARROW.setEnabled(false);
         
         if (moves.isEmpty()) {
-            GAME_OVER.setVisible(false);
+            INFO.setText("");
         } else {
             hintBoard.setVisible(false);
         }
@@ -514,4 +526,3 @@ final class Game extends JLayeredPane implements ActionListener {
     }
     
 }
-

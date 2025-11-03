@@ -17,16 +17,14 @@ import javax.swing.JPanel;
 /**
  * Board10x10
  * 
- * Board with tiles
+ * Board with tiles [50]
  * 
- * tile[50]
- * 
- * -x (column)
- * -y (row)
- * -paintTile (g.fillRect(tile))
+ * -x (static)
+ * -y (static)
+ * -paintTile (g.fillRect(tile)) (static)
  * -actionPerformed (rotate)
  * 
- * @author vanFoeken
+ * @author Naardeze
 */
 
 final class Board10x10 extends JPanel implements ActionListener {    
@@ -62,21 +60,16 @@ final class Board10x10 extends JPanel implements ActionListener {
         });
     }
 
-    static int x(int index) {
+    static int x(int index) {//column
         return index % (GRID / 2) * 2 + 1 - index / (GRID / 2) % 2;
     }
 
-    static int y(int index) {
+    static int y(int index) {//row
        return index / (GRID / 2);
     }
-    
-    @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-            
-        for (Rectangle tile : tile) {
-            paintTile(g, tile);
-        }
+
+    static void paintTile(Graphics g, Rectangle tile) {
+        g.fillRect(tile.x, tile.y, tile.width, tile.height);
     }
 
     @Override
@@ -88,9 +81,13 @@ final class Board10x10 extends JPanel implements ActionListener {
         repaint();
     }
     
-    static void paintTile(Graphics g, Rectangle tile) {
-        g.fillRect(tile.x, tile.y, tile.width, tile.height);
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+            
+        for (Rectangle tile : tile) {
+            paintTile(g, tile);
+        }
     }
 
 }
-

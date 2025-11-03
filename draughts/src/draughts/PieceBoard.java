@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.JComponent;
 
-
 /**
  * PieceBoard
  * 
@@ -19,7 +18,7 @@ import javax.swing.JComponent;
  * board (pieces)
  * move (yellow, green)
  * 
- * @author vanFoeken
+ * @author Naardeze
  */
 
 final class PieceBoard extends JComponent {
@@ -84,4 +83,3 @@ final class PieceBoard extends JComponent {
     }
     
 }
-

@@ -8,7 +8,6 @@ import java.awt.Component;
 import java.awt.Graphics;
 import java.util.Set;
 
-
 /**
  * HintBoard
  *
@@ -18,7 +17,7 @@ import java.util.Set;
  * selected -> one of moveable
  * moveable -> pieces to select 
  * 
- * @author vanFoeken
+ * @author Naardeze
 */
 
 final class HintBoard extends Component {
@@ -59,4 +58,3 @@ final class HintBoard extends Component {
     }
     
 }
-
