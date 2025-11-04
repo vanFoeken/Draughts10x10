@@ -30,7 +30,7 @@ import java.util.HashSet;
  */
 
 final class MinMax extends HashMap<String, Integer> {
-    final private static int ALFA =  Integer.MAX_VALUE;
+    final private static int ALFA = Integer.MAX_VALUE;
     final private static int BETA = Integer.MIN_VALUE;
     
     private static enum Node {
@@ -382,4 +382,5 @@ final class MinMax extends HashMap<String, Integer> {
     }
 
 }
+
 
