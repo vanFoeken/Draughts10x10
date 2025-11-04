@@ -6,7 +6,7 @@ Draw not implemented (yet).
 
 Game: white or black.
 
-AI (1-7) -> search depth
+AI -> 1-7
 
 Undo move
 
