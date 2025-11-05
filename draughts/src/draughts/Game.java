@@ -43,7 +43,7 @@ import javax.swing.JLayeredPane;
  * hintBoard -> selected or moveable player pieces, mouseadapter for player move
  * 
  * -turn(color) -> 1: pieces, moves, maxCapture
- *                 2: evaluation -> gameover or get move (player (mouse) or ai (minimax))
+ *                 2: evaluation -> gameover or move -> player (mouse) or ai (minimax)
  * -actionPerformed -> undo move
  * 
  * class BoardMove -> animation
@@ -522,3 +522,4 @@ final class Game extends JLayeredPane implements ActionListener {
     }
     
 }
+
