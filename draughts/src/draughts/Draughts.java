@@ -29,7 +29,7 @@ import javax.swing.JSlider;
  * menu -> new Game (WHITE/BLACK)
  * AI (1-7) -> search depth
  * ARROW -> undo move
- * INFO -> game info about player and winner color
+ * INFO -> game info about player and winner
  * HINT -> color moveable
  * Rotate -> BOARD10X10
  * 
@@ -150,3 +150,4 @@ final class Draughts extends JFrame {
     }
 
 }
+
