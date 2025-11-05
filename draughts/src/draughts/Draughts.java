@@ -30,7 +30,7 @@ import javax.swing.JSlider;
  * AI (1-7) -> search depth
  * ARROW -> undo move
  * INFO -> game info about player and winner
- * HINT -> color moveable
+ * HINT (on/off) -> moveable pieces
  * Rotate -> BOARD10X10
  * 
  * @author vanFoeken
@@ -82,7 +82,7 @@ final class Draughts extends JFrame {
         }
         
         AI.setMajorTickSpacing(1);
-        AI.setPaintTicks(true);//no labels (ToolTip) -> no distraction
+        AI.setPaintTicks(true);//no labels (see ToolTip) -> no distraction
         AI.setOpaque(false);
         AI.setToolTipText("" + AI.getValue());//4
         AI.addChangeListener(e -> AI.setToolTipText("" + AI.getValue()));
@@ -150,4 +150,5 @@ final class Draughts extends JFrame {
     }
 
 }
+
 
