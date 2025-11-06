@@ -30,8 +30,8 @@ import javax.swing.JPanel;
 final class Board10x10 extends JPanel implements ActionListener {    
     final static int GRID = 10;//10x10
 
-    final private static Color LIGHT = new Color(255, 250, 188);//board
-    final private static Color DARK = new Color(186, 136, 96);//tile
+    final private static Color LIGHT = new Color(250, 240, 175);//board
+    final private static Color DARK = new Color(178, 128, 88);//tile
     
     final Rectangle[] tile = new Rectangle[GRID * GRID / 2];//[50]
     
@@ -91,6 +91,7 @@ final class Board10x10 extends JPanel implements ActionListener {
     }
 
 }
+
 
 
 
