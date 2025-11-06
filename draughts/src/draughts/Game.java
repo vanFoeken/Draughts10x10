@@ -58,10 +58,10 @@ final class Game extends JLayeredPane implements ActionListener {
     final private static String[] COLOR = {"White", "Black"};
 
     private static enum Direction {
-        MIN_X_MIN_Y(-1, -1),
-        PLUS_X_MIN_Y(1, -1),
-        MIN_X_PLUS_Y(-1, 1),
-        PLUS_X_PLUS_Y(1, 1);
+        MIN_X_MIN_Y(-1, -1),//-> tile[0]
+        PLUS_X_MIN_Y(1, -1),//-> tile[4]
+        MIN_X_PLUS_Y(-1, 1),//-> tile[45]
+        PLUS_X_PLUS_Y(1, 1);//-> tile[49]
 
         final int x;
         final int y;
@@ -522,3 +522,4 @@ final class Game extends JLayeredPane implements ActionListener {
     }
     
 }
+
