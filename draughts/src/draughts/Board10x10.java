@@ -31,7 +31,7 @@ final class Board10x10 extends JPanel implements ActionListener {
     final static int GRID = 10;//10x10
 
     final private static Color LIGHT = new Color(255, 250, 200);//board
-    final private static Color DARK = new Color(195, 145, 105);//tile
+    final private static Color DARK = new Color(188, 138, 95);//tile
     
     final Rectangle[] tile = new Rectangle[GRID * GRID / 2];//[50]
     
@@ -91,3 +91,4 @@ final class Board10x10 extends JPanel implements ActionListener {
     }
 
 }
+
