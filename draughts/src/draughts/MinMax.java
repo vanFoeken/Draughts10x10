@@ -15,7 +15,7 @@ import java.util.HashSet;
  * Minimax with alfa beta pruning
  * extends HashMap -> no dubbel calculations
  * 1 depth = 1 move -> depth=0 continue while maxCapture > 0
- * value is calculated by + or - maxCapture
+ * value + or - maxCapture
  * 
  * enum Node -> alfa beta
  * enum Diagonal -> move in 4 directions (bitboards)
@@ -66,7 +66,7 @@ final class MinMax extends HashMap<String, Integer> {
     final private static int ROW = GRID - 1;//9
     
     private static enum Diagonal {
-        MIN_LEFT(COLUMN, 0, -COLUMN) {//-- tile[0] (1,0)
+        MIN_LEFT(COLUMN, 0, -COLUMN) {//--
             @Override
             long getLine(int index, long occupied, long from) {
                 long diagonal = LEFT_RIGHT[COLUMN - 1 - index % COLUMN + index / COLUMN % 2 + index / GRID];
@@ -74,7 +74,7 @@ final class MinMax extends HashMap<String, Integer> {
                 return diagonal & (occupied ^ Long.reverse(Long.reverse(diagonal & occupied) - Long.reverse(from)));
             }
         }, 
-        MIN_RIGHT(COLUMN - 1, 0, -COLUMN + 1) {//+- tile[4] (9,0)
+        MIN_RIGHT(COLUMN - 1, 0, -COLUMN + 1) {//+-
             @Override
             long getLine(int index, long occupied, long from) {
                 long diagonal = RIGHT_LEFT[index % COLUMN + index / GRID];
@@ -82,7 +82,7 @@ final class MinMax extends HashMap<String, Integer> {
                 return diagonal & (occupied ^ Long.reverse(Long.reverse(diagonal & occupied) - Long.reverse(from)));
             }
         }, 
-        PLUS_LEFT(COLUMN, ROW, COLUMN) {//-+ tile[45] (0,9)
+        PLUS_LEFT(COLUMN, ROW, COLUMN) {//-+
             @Override
             long getLine(int index, long occupied, long from) {
                 long diagonal = RIGHT_LEFT[index % COLUMN + index / GRID];
@@ -90,7 +90,7 @@ final class MinMax extends HashMap<String, Integer> {
                 return diagonal & (occupied ^ ((diagonal & occupied) - from));
             }
         }, 
-        PLUS_RIGHT(COLUMN - 1, ROW, COLUMN + 1) {//++ tile[49] (8,9)
+        PLUS_RIGHT(COLUMN - 1, ROW, COLUMN + 1) {//++
             @Override
             long getLine(int index, long occupied, long from) {
                 long diagonal = LEFT_RIGHT[COLUMN - 1 - index % COLUMN + index / COLUMN % 2 + index / GRID];
@@ -119,8 +119,8 @@ final class MinMax extends HashMap<String, Integer> {
 
         abstract long getLine(int index, long occupied, long from);
 
-        final private static long[] LEFT_RIGHT = new long[GRID];//- -> +
-        final private static long[] RIGHT_LEFT = new long[GRID - 1];//+ -> -
+        final private static long[] LEFT_RIGHT = new long[GRID];
+        final private static long[] RIGHT_LEFT = new long[GRID - 1];
 
         static {
             for (int i = 0; i < LEFT_RIGHT.length; i++) {
@@ -380,3 +380,4 @@ final class MinMax extends HashMap<String, Integer> {
     }
 
 }
+
