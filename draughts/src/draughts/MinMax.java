@@ -204,7 +204,7 @@ final class MinMax extends HashMap<String, Integer> {
                                         movesPiece.add(move);//legal move
                                     }
                                     
-                                    for (long destination = move ^ captures; destination != 0l; destination ^= Long.lowestOneBit(destination)) {//empty tile(s)
+                                    for (long destination = move ^ captures; destination != 0l; destination ^= Long.lowestOneBit(destination)) {//empty
                                         int to = Long.numberOfTrailingZeros(destination);
 
                                         for (Diagonal diagonal : Diagonal.values()) {
@@ -285,7 +285,7 @@ final class MinMax extends HashMap<String, Integer> {
                     captured.add(Long.numberOfTrailingZeros(l));
                 }
 
-                for (long destination = move ^ captures; destination != 0l; destination ^= Long.lowestOneBit(destination)) {//empty tile(s)
+                for (long destination = move ^ captures; destination != 0l; destination ^= Long.lowestOneBit(destination)) {//empty
                     int to = Long.numberOfTrailingZeros(destination);                    
                     String key = String.valueOf(getBoard(color, board.clone(), piece, captured, to));
 
@@ -380,4 +380,5 @@ final class MinMax extends HashMap<String, Integer> {
     }
 
 }
+
 
