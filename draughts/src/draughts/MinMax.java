@@ -143,7 +143,7 @@ final class MinMax extends HashMap<String, Integer> {
         }
     }
 
-    private static long middle = 0l;//all tiles can move in 4 directions
+    private static long middle = 0l;//can move in 4 directions
 
     final private Node node;
     final private int color;
@@ -380,3 +380,4 @@ final class MinMax extends HashMap<String, Integer> {
     }
 
 }
+
