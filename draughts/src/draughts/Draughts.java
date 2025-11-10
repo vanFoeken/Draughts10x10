@@ -71,7 +71,6 @@ final class Draughts extends JFrame {
         
         for (int color : new int[] {WHITE, BLACK}) {
             menu.add(new JMenuItem(new ImageIcon(Toolkit.getDefaultToolkit().createImage(WB.toCharArray()[color] + ".png").getScaledInstance(44, 44, Image.SCALE_SMOOTH)))).addActionListener(e -> {
-                GAME_INFO.setText("");
                 BOARD10X10.remove(game);
                 
                 game = new Game(color);
@@ -150,3 +149,4 @@ final class Draughts extends JFrame {
     }
 
 }
+
