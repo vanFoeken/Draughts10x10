@@ -84,7 +84,7 @@ final class Draughts extends JFrame {
         }
         
         LEVEL.setMajorTickSpacing(1);
-        LEVEL.setPaintTicks(true);//no labels (ToolTip) -> no distraction
+        LEVEL.setPaintTicks(true);//no labels (see ToolTip) -> no distraction
         LEVEL.setOpaque(false);
         LEVEL.setToolTipText("" + LEVEL.getValue());//3
         LEVEL.addChangeListener(e -> LEVEL.setToolTipText("" + LEVEL.getValue()));
@@ -152,3 +152,4 @@ final class Draughts extends JFrame {
     }
 
 }
+
