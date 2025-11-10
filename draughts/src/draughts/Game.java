@@ -1,17 +1,18 @@
 package draughts;
 
 import static draughts.Board10x10.GRID;
-import static draughts.Board10x10.x;
-import static draughts.Board10x10.y;
 import static draughts.Draughts.ARROW;
 import static draughts.Draughts.BLACK;
 import static draughts.Draughts.BOARD10X10;
 import static draughts.Draughts.GAME_INFO;
+import static draughts.Draughts.LEVEL;
 import static draughts.Draughts.WHITE;
 import static draughts.HintBoard.NOT_SELECTED;
-import static draughts.PieceBoard.EMPTY;
 import static draughts.PieceBoard.PIECE;
-import static draughts.PieceBoard.WB;
+import static draughts.board.PieceBoard.EMPTY;
+import static draughts.board.PieceBoard.WB;
+import static draughts.board.SquareBoard.x;
+import static draughts.board.SquareBoard.y;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Cursor;
@@ -30,7 +31,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Stack;
 import javax.swing.JLayeredPane;
-import static draughts.Draughts.LEVEL;
 
 /**
  * Game
@@ -522,3 +522,4 @@ final class Game extends JLayeredPane implements ActionListener {
     }
     
 }
+
