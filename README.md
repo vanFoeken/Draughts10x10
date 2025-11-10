@@ -6,7 +6,7 @@ Draw not implemented (yet).
 
 Game: white or black.
 
-AI level 1-7
+AI level 1-5 -> 1 level = 2 moves (alfa & beta)
 
 Undo move
 
