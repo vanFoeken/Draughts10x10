@@ -73,7 +73,7 @@ final class Draughts extends JFrame {
         menuBar.add(LEVEL, BorderLayout.EAST);
         
         for (int color : new int[] {WHITE, BLACK}) {
-            menu.add(new JMenuItem(new ImageIcon(Toolkit.getDefaultToolkit().createImage(WB.toCharArray()[color] + ".png").getScaledInstance(44, 44, Image.SCALE_SMOOTH)))).addActionListener(e -> {
+            menu.add(new JMenuItem(new ImageIcon(Toolkit.getDefaultToolkit().createImage(WB.toCharArray()[color] + ".png").getScaledInstance(42, 42, Image.SCALE_SMOOTH)))).addActionListener(e -> {
                 BOARD10X10.remove(game);
                 
                 game = new Game(color);
@@ -152,4 +152,5 @@ final class Draughts extends JFrame {
     }
 
 }
+
 
