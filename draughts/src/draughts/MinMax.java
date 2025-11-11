@@ -14,9 +14,9 @@ import java.util.HashSet;
  * 
  * Minimax with alfa beta pruning
  * extends HashMap -> no dubbel calculations
- * 1 level = 1 depth = 2 moves (alfa & beta)
+ * 1 level = 1 depth = 2 moves (ply) (alfa & beta)
  * depth=0 continue while maxCapture > 0
- * value -> -/+ maxCapture
+ * value -/+ maxCapture
  * 
  * enum Node -> alfa beta
  * enum Diagonal -> move in 4 directions (bitboards)
@@ -59,8 +59,8 @@ final class MinMax extends HashMap<String, Integer> {
             }
         };
 
-        abstract int toAlfaBeta(int alfaBeta, int value);//-> alfaBeta
-        abstract int valueOf(int maxCapture);//-> value
+        abstract int toAlfaBeta(int alfaBeta, int value);
+        abstract int valueOf(int maxCapture);
     }
     
     final private static int COLUMN = GRID / 2;//5
@@ -121,7 +121,7 @@ final class MinMax extends HashMap<String, Integer> {
         abstract long getLine(int index, long occupied, long from);
 
         final private static long[] LEFT_RIGHT = new long[GRID];//-+
-        final private static long[] RIGHT_LEFT = new long[GRID - 1];//-+
+        final private static long[] RIGHT_LEFT = new long[GRID - 1];//+-
 
         static {
             for (int i = 0; i < LEFT_RIGHT.length; i++) {
@@ -144,7 +144,7 @@ final class MinMax extends HashMap<String, Integer> {
         }
     }
 
-    private static long middle = 0l;//all tiles can move in 4 directions
+    private static long middle = 0l;//can move in 4 directions
 
     final private Node node;
     final private int color;
@@ -179,10 +179,10 @@ final class MinMax extends HashMap<String, Integer> {
                        
                         long capture = move & opponent;
                         
-                        if ((capture & middle) != 0l) {
+                        if ((capture & middle) != 0l) {//can jump
                             long step = vertical.getNext(Long.numberOfTrailingZeros(capture));//tile after capture
                             
-                            if ((step & empty) == step) {
+                            if ((step & empty) == step) {//legal capture
                                 if (isKing && (step & middle) == step) {
                                     step = vertical.getLine(from, ~empty, step) & empty;
                                 }
@@ -219,10 +219,10 @@ final class MinMax extends HashMap<String, Integer> {
                                                 if ((step & move) == 0l) {//no dubbels
                                                     capture = step & opponent;
 
-                                                    if ((capture & middle) != 0l) {
+                                                    if ((capture & middle) != 0l) {//can jump
                                                         step = diagonal.getNext(Long.numberOfTrailingZeros(capture));//tile after capture
 
-                                                        if ((step & empty) == step) {
+                                                        if ((step & empty) == step) {//legal capture
                                                             if (isKing && (step & middle) == step) {
                                                                 step = diagonal.getLine(to, ~empty, step) & empty;
                                                             }
@@ -381,3 +381,4 @@ final class MinMax extends HashMap<String, Integer> {
     }
 
 }
+
