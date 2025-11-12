@@ -42,7 +42,6 @@ final class HintBoard extends Component {
                 repaint();
             }
         });
-         
     }
     
     int getSelected() {
@@ -67,3 +66,4 @@ final class HintBoard extends Component {
     }
     
 }
+
