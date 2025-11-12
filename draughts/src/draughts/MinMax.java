@@ -279,12 +279,12 @@ final class MinMax extends HashMap<String, Integer> {
             return value;
         }
 
-        value += node.valueOf(maxCapture);
+        value += node.valueOf(maxCapture);//value -/+ maxCapture
 
         for (int from : moves.keySet()) {
             char piece = board[from];
 
-            board[from] = EMPTY;
+            board[from] = EMPTY;//piece off board
 
             for (long move : moves.get(from)) {
                 long captures = move & opponent;
@@ -295,14 +295,14 @@ final class MinMax extends HashMap<String, Integer> {
                 }
 
                 for (long destination = move ^ captures; destination != 0l; destination ^= Long.lowestOneBit(destination)) {//empty
-                    int to = Long.numberOfTrailingZeros(destination);                    
-                    String key = String.valueOf(getBoard(color, board.clone(), piece, captured, to));
+                    int to = Long.numberOfTrailingZeros(destination);
+                    String key = String.valueOf(getBoard(color, board.clone(), piece, captured, to));//board after move
 
                     if (!containsKey(key)) {
                         put(key, minMax.valueOf(key.toCharArray(), opponent ^ captures, turn ^ (1l << from ^ 1l << to), this, alfaBeta.clone(), value, depth));
                     }
 
-                    alfaBeta[node.ordinal()] = node.toAlfaBeta(alfaBeta[node.ordinal()], get(key));
+                    alfaBeta[node.ordinal()] = node.toAlfaBeta(alfaBeta[node.ordinal()], get(key));//set alfaBeta
 
                     if (alfaBeta[Node.ALFA.ordinal()] >= alfaBeta[Node.BETA.ordinal()]) {//alfa>=beta
                         return alfaBeta[node.ordinal()];//prune
@@ -310,7 +310,7 @@ final class MinMax extends HashMap<String, Integer> {
                 }
             }
 
-            board[from] = piece;
+            board[from] = piece;//piece on board
         }
         
         return alfaBeta[node.ordinal()];
@@ -348,7 +348,7 @@ final class MinMax extends HashMap<String, Integer> {
         for (int from : moves.keySet()) {
             char piece = board[from];
             
-            board[from] = EMPTY;
+            board[from] = EMPTY;//piece off board
             
             for (ArrayList<Integer> move : moves.get(from)) {//<<captured>, to>
                 int to = move.remove(maxCapture);
@@ -374,10 +374,11 @@ final class MinMax extends HashMap<String, Integer> {
                 }
             }
             
-            board[from] = piece;
+            board[from] = piece;//piece on board
         }
        
         return alfaMoves.get((int) (Math.random() * alfaMoves.size()));//ai move
     }
     
 }
+
