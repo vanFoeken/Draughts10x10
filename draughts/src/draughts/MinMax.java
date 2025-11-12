@@ -146,6 +146,14 @@ final class MinMax extends HashMap<String, Integer> {
 
     private static long middle = 0l;//can move in 4 directions
 
+    static {//0<x<9 & 0<y<9
+        for (int i = COLUMN; i < ROW * COLUMN; i++) {//5-45
+            if (i % GRID != COLUMN - 1 && i % GRID != COLUMN) {//!4 & !5
+                middle ^= 1l << i;
+            }
+        }
+    }
+
     final private Node node;
     final private int color;
     
@@ -372,13 +380,4 @@ final class MinMax extends HashMap<String, Integer> {
         return alfaMoves.get((int) (Math.random() * alfaMoves.size()));//ai move
     }
     
-    static {//0<x<9 & 0<y<9
-        for (int i = COLUMN; i < ROW * COLUMN; i++) {//5<i<45
-            if (i % GRID < COLUMN - 1 || i % GRID > COLUMN) {//4>i>5
-                middle ^= 1l << i;
-            }
-        }
-    }
-
 }
-
