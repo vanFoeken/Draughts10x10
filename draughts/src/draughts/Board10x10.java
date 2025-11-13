@@ -45,16 +45,16 @@ final class Board10x10 extends JPanel implements ActionListener {
             @Override
             public void componentResized(ComponentEvent e) {
                 //tile size
-                int column = getWidth() / GRID;
-                int row = getHeight() / GRID;
+                int width = getWidth() / GRID;
+                int height = getHeight() / GRID;
 
                 for (int i = 0; i < tile.length; i++) {//sized once -> tile[0] top left (1,0)
-                    tile[i] = new Rectangle(x(i) * column, y(i) * row, column, row);
+                    tile[i] = new Rectangle(x(i) * width, y(i) * height, width, height);
                 }
 
                 for (char piece : WB.toCharArray()) {//tile size
-                    PIECE[0][WB.indexOf(piece)] = Toolkit.getDefaultToolkit().createImage(piece + ".png").getScaledInstance(column, row, Image.SCALE_SMOOTH);//pawn
-                    PIECE[1][WB.indexOf(piece)] = Toolkit.getDefaultToolkit().createImage(piece + "" + piece + ".png").getScaledInstance(column, row, Image.SCALE_SMOOTH);//king
+                    PIECE[0][WB.indexOf(piece)] = Toolkit.getDefaultToolkit().createImage(piece + ".png").getScaledInstance(width, height, Image.SCALE_SMOOTH);//pawn
+                    PIECE[1][WB.indexOf(piece)] = Toolkit.getDefaultToolkit().createImage(piece + "" + piece + ".png").getScaledInstance(width, height, Image.SCALE_SMOOTH);//king
                 }
             }
         });
@@ -91,5 +91,6 @@ final class Board10x10 extends JPanel implements ActionListener {
     }
 
 }
+
 
 
