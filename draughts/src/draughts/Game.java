@@ -190,7 +190,7 @@ final class Game extends JLayeredPane implements ActionListener {
                                 hintBoard.setSelected(NOT_SELECTED);
                             }
                             
-                            hintBoard.repaint();
+                            repaint();
                         //3 pressed = EMPTY, from != NOT_SELECTED
                         } else if (moves.containsKey(selected)) {
                             for (ArrayList<Integer> move : moves.get(selected)) {
@@ -522,4 +522,5 @@ final class Game extends JLayeredPane implements ActionListener {
     }
     
 }
+
 
