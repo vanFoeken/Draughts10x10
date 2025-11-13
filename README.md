@@ -6,7 +6,7 @@ Draw not implemented (yet).
 
 Game: white or black.
 
-AI level 1-5 -> 1 level = 2 moves (alfa & beta)
+AI level 1-5 -> 1 level = 2 moves/ply (alfa & beta)
 
 Undo move
 
@@ -16,4 +16,4 @@ Rotate board
 
 Move animation.
 
-What you see is what you get. Have fun!!
+Player is white and level is 3 by default (screenshot.png), what you see is what you get. Have fun!!
