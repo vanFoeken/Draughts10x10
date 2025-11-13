@@ -140,7 +140,7 @@ final class Game extends JLayeredPane implements ActionListener {
                                     }
                                 }
 
-                                if (pieces[1 - player].contains(step) && !move.contains(step)) {//legal capture
+                                if (pieces[1 - player].contains(step) && !move.contains(step)) {//capture
                                     move.add(step);
 
                                     step = direction.getNext(step);//tile after capture
@@ -522,3 +522,4 @@ final class Game extends JLayeredPane implements ActionListener {
     }
     
 }
+
