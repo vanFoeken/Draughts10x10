@@ -18,7 +18,7 @@ import java.util.HashSet;
  * depth=0 continue while maxCapture > 0
  * value -/+ maxCapture
  * 
- * enum Node -> alfa beta
+ * enum Node -> alfa beta values (-/+)
  * enum Diagonal -> move in 4 directions (bitboards)
  * 
  * -valueOf -> 1 moves, maxCapture
@@ -381,4 +381,5 @@ final class MinMax extends HashMap<String, Integer> {
     }
     
 }
+
 
