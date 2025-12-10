@@ -18,9 +18,7 @@ import static draughts.Game.MAN;
  * depth=0 continue while maxCapture > 0
  * value -> -/+ maxCapture
  * 
- * INFINITY -> alfa(+) beta(-)
- * 
- * enum Node -> evaluation
+ * enum Node -> alfa beta
  * enum Diagonal -> move in 4 directions (bitboards)
  * 
  * -valueOf -> 1 moves, maxCapture
@@ -381,3 +379,4 @@ final class MinMax extends HashMap<String, Integer> {
     }
     
 }
+
