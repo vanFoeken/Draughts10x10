@@ -360,7 +360,6 @@ final class MinMax extends HashMap<String, Integer> {
                 }
 
                 int beta = min.valueOf(getBoard(ai, board.clone(), piece, move, to), opponent ^ captures, turn ^ (1l << from ^ 1l << to), max, new int[] {BETA, ALFA}, maxCapture, level);//beta
-//                int beta = new MinMax(Node.BETA, player).valueOf(getBoard(ai, board.clone(), piece, move, to), opponent ^ captures, turn ^ (1l << from ^ 1l << to), new MinMax(Node.ALFA, ai), new int[] {BETA, ALFA}, maxCapture, level);//beta
                 
                 if (beta >= alfa) {
                     if (beta > alfa) {
@@ -383,3 +382,4 @@ final class MinMax extends HashMap<String, Integer> {
     }
     
 }
+
