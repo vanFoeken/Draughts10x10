@@ -32,8 +32,8 @@ import static draughts.Game.MAN;
  */
 
 final class MinMax extends HashMap<String, Integer> {
-    final private static int ALFA = Integer.MAX_VALUE;//alfa beta
-    final private static int BETA = Integer.MIN_VALUE;//alfa beta
+    final private static int ALFA = Integer.MAX_VALUE;
+    final private static int BETA = Integer.MIN_VALUE;
     
     private static enum Node {
         ALFA {//ai
@@ -41,7 +41,6 @@ final class MinMax extends HashMap<String, Integer> {
             int toAlfaBeta(int alfa, int value) {
                 return Integer.max(alfa, value);
             }
-
             @Override
             int valueOf(int maxCapture) {
                 return maxCapture;
@@ -52,7 +51,6 @@ final class MinMax extends HashMap<String, Integer> {
             int toAlfaBeta(int beta, int value) {
                 return Integer.min(beta, value);
             }
-
             @Override
             int valueOf(int maxCapture) {
                 return -maxCapture;
@@ -379,4 +377,5 @@ final class MinMax extends HashMap<String, Integer> {
     }
     
 }
+
 
